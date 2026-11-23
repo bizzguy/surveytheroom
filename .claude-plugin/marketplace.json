@@ -1,0 +1,8 @@
+{
+  "name": "surveytheroom",
+  "description": "Survey the Room: live surveys for a room of phones, run from a conversation with Claude.",
+  "owner": { "name": "XoSelf LLC" },
+  "plugins": [
+    { "name": "surveytheroom", "source": "./", "description": "The Survey the Room connector and a skill for running a session." }
+  ]
+}

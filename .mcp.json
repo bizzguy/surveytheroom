@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "surveytheroom": {
+      "type": "http",
+      "url": "https://surveytheroom.com/mcp"
+    }
+  }
+}
