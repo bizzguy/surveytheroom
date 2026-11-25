@@ -51,6 +51,26 @@ the room must not wait on them.
 A phone shows one box per answer allowed. If someone puts several answers in one box, the
 service splits them into separate answers by itself; nothing to do.
 
+## Use cases
+
+Survey the Room keeps written steps for whole sessions, such as picking lunch as a group and taking
+each person's order. When the presenter asks for a session like that, or names a use case, call
+`list_use_cases`, choose the one that fits, read it with `get_use_case { name }`, and follow its
+steps: one step per request from the presenter. Read it once and keep it for the session. If none
+fits, say so in one line and run the session with the tools above. New use cases appear in that
+list by themselves; nothing here needs to change.
+
+Three things use cases lean on, which also work on their own:
+
+- **Matchups.** `question: { type: "pairs", options: [...] }` (3 to 12 options) shows each phone two
+  options at a time. The results rank the options by rating; every option starts at 1000.
+- **Follow-up questions.** In `questions`, add `show_if: { question: 2, is: "Other" }` to a question
+  and it is shown only to people who picked that option of question 2. `is` takes an option's words
+  or its number.
+- **One row per person.** `get_responses { survey, by: "person" }` returns each person's answers
+  together, for an order sheet or a sign-up list. An option can carry a link:
+  `{ label, url, url_label }`. A text question with `split: false` keeps a typed answer whole.
+
 ## Question types
 
 Twenty kinds. Pick the type from the presenter's words; the question goes in `title` exactly as worded.
