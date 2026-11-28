@@ -96,6 +96,7 @@ Twenty kinds. Pick the type from the presenter's words; the question goes in `ti
 | "Reaction with faces", "how do you feel" | `question: { type: "emoji" }` (five faces; `options` to give your own emoji) |
 | "Quiz", "the answer is ..." | `question: { type: "quiz", options: [...], correct: "<the right option>" }` |
 | "Rank these", "best first" | `question: { type: "ranking", options: [...], max: <places> }` (all of them when not given) |
+| "Put these in order", "sort these", "drag into order" | `question: { type: "sorter", options: [...] }` (2 to 10): each phone drags the whole list into its order; results rank by points |
 
 **A picture with the question** ("show a map and ask ...", "what is this?"): pass `image` with
 the https address of a PNG, JPEG, GIF or WebP picture under 1.5 MB. Survey the Room fetches it once and
@@ -120,8 +121,12 @@ Three different things. Nobody has to say "Survey the Room"; they say survey, qu
 
 - A **room** is the place: one address and one QR code. It holds every survey asked in it.
 - A **survey** is what the room sees at one time. Nearly always it is one question
-  (`publish_survey` with `text`, `choice` or `question`). It can hold several (`questions`); phones
-  then show them one at a time and the screen steps through them.
+  (`publish_survey` with `text`, `choice` or `question`). It can hold several (`questions`): each
+  person then goes through them on their phone at their own pace. The screen shows a list of the
+  questions with how many people have answered each, and stays there; the presenter clicks a
+  question, or presses the arrow keys, to show its answers. It never changes question by itself.
+  To take the whole room through questions together, publish one question per survey instead.
+  When asked for "a question", publish one question, not several.
 - A **question** is the thing to answer, of one type.
 
 The presenter may use "survey" loosely. Read it from what is going on:
