@@ -1,6 +1,6 @@
 {
   "name": "surveytheroom",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Survey the Room: ask a room of phones a question, run a vote and show the results, from a conversation with Claude.",
   "author": {
     "name": "XoSelf LLC",

@@ -30,6 +30,7 @@ pass `"current"` together with `room` for the question on the screen now.
 | Put answers in categories | `place_answers { survey, place: [{ entry: "e_0001", cat: "c1" }] }` |
 | Turn the round into a vote, in one call | `publish_survey { room, title, vote_from_categories: { max: <picks> }, name }` |
 | Hide an answer from the screen | `hide_answer { survey: "current", room, id: "e_0004" }` (`hidden: false` shows it again) |
+| Put a vote in order by votes on the screen | `sort_results { survey: "current", room, by: "votes" }` (`by: "question"` puts it back) |
 | Reopen a closed round | `reopen_survey { survey }` |
 | Fill the round with simulated phones | `rehearse { room, respondents: 50 }` (then pass `include: "test"` to get_results, get_responses, vote_from_categories and get_report) |
 | Remove rehearsal data | `purge_test { room }` |
@@ -171,6 +172,10 @@ The presenter talks; you pick the tool.
 - **"Close the vote and show the top three"**: `close_survey`, then `get_results`. Name the top
   three with their votes. If two or more are level on third place, say it is a tie and name all
   of them. The screen marks them itself.
+- **"Sort the results", "put them in order by votes"**: `sort_results` with `by: "votes"`. The
+  screen lists a vote in the order of the question, open or closed, with the leader's bar in
+  another colour; it changes to most votes first only when asked. `by: "question"` puts it back.
+  Closing a vote does not sort it.
 - **"Create a vote from those, three votes each, then show the winner"** (one request): publish
   the vote as above, then `close_survey` with `when_quiet: 6`, which waits for the room to finish
   voting and closes it, then `get_results` and name the winner.
